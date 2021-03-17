@@ -1,0 +1,24 @@
+<?php
+/**
+*
+* MantisBT Plugin: CustomFieldsToTop - Moves selected custom fields to the top of the Report Issue form and the Update Issue form.
+*
+* @copyright (c) 2021, LukeWCS
+*
+* @author LukeWCS
+*/
+
+$s_plugin_CustomFieldsToTop_title						= "Custom Fields To Top";
+$s_plugin_CustomFieldsToTop_description					= "Moves selected custom fields to the top of the Report Issue form and the Update Issue form.";
+
+$s_plugin_CustomFieldsToTop_configuration				= "Configuration";
+
+$s_plugin_CustomFieldsToTop_custom_fields_report_title	= "Report Issue form";
+$s_plugin_CustomFieldsToTop_custom_fields_update_title	= "Update Issue form";
+
+$s_plugin_CustomFieldsToTop_custom_fields_description	= "Here you can enter the IDs of the user-defined fields that are to be moved up. The custom fields are positioned on the form in the order in which they are entered here.";
+$s_plugin_CustomFieldsToTop_custom_fields_input_note1	= "IDs must be separated with commas. Example: <code>1,2,3</code>";
+$s_plugin_CustomFieldsToTop_custom_fields_input_note2	= "Only digits and commas are allowed.";
+
+$s_plugin_CustomFieldsToTop_show_after_move_title		= "Show form only after moving";
+$s_plugin_CustomFieldsToTop_show_after_move_description	= "The form will not be displayed until all fields have been moved.";

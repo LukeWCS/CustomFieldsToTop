@@ -1,0 +1,13 @@
+/**
+*
+* MantisBT Plugin: CustomFieldsToTop - Moves selected custom fields to the top of the Report Issue form and the Update Issue form.
+*
+* @copyright (c) 2021, LukeWCS
+*
+*/
+
+#report_bug_form table.table,
+#update_bug_form table.table {
+	opacity: 0;
+	pointer-events: none;
+}
