@@ -14,61 +14,58 @@ $(document).ready(function() {
 	var	GetCustomElement = function(num) {
 		return $('#custom_field_' + CustomFields[num]);
 	};
+	var ShowForm = function(name) {
+		$("#" + name).find("table.table").css({"opacity": "1", "pointer-events": "auto"});
+	}
 	var FormName = GetScriptParam('FormName');
 	var CustomFields = GetScriptParam('CustomFields').split(',');
 	var ShowAfterMove = (GetScriptParam('ShowAfterMove') == true);
 
-	if (!CustomFields.length) {
-		return;
-	}
-
 	if (FormName == "report") {
-		if (!$('#report_bug_form').length) {
-			return;
-		}
-		var InsertPointElement = $("#category_id").closest('tr');
-		var CustomElement = null;
-		var CustomElementFirst = null;
+		if (CustomFields[0] !== '' && $('#report_bug_form').length) {
+			var InsertPointElement = $("#category_id").closest('tr');
+			var CustomElement = null;
+			var CustomElementFirst = null;
 
-		for (i = 0; i < CustomFields.length; i++) {
-			CustomElement = GetCustomElement(i)
-			if (!CustomElement.length) {
-				continue;
+			for (i = 0; i < CustomFields.length; i++) {
+				CustomElement = GetCustomElement(i)
+				if (!CustomElement.length) {
+					continue;
+				}
+				CustomElement.attr('tabindex', '1');
+				CustomElement.closest('tr').insertBefore(InsertPointElement);
+				if (CustomElementFirst === null) {
+					CustomElementFirst = GetCustomElement(i);
+				}
 			}
-			CustomElement.attr('tabindex', '1');
-			CustomElement.closest('tr').insertBefore(InsertPointElement);
-			if (CustomElementFirst === null) {
-				CustomElementFirst = GetCustomElement(i);
+			if (CustomElementFirst !== null) {
+				$("#category_id").removeClass('autofocus');
+				CustomElementFirst.addClass('autofocus');
+				CustomElementFirst.focus();
 			}
 		}
 		if (ShowAfterMove) {
-			$("#report_bug_form").find("table.table").css({"opacity": "1", "pointer-events": "auto"});
-		}
-		if (CustomElementFirst !== null) {
-			$("#category_id").removeClass('autofocus');
-			CustomElementFirst.addClass('autofocus');
-			CustomElementFirst.focus();
+			ShowForm("report_bug_form");
 		}
 	} else if (FormName == "update") {
-		if (!$('#update_bug_form').length) {
-			return;
-		}
-		var InsertPointElement = $("#category_id").closest('tr');
-		var CustomElement = null;
+		if (CustomFields[0] !== '' && $('#update_bug_form').length) {
+			var InsertPointElement = $("#category_id").closest('tr');
+			var CustomElement = null;
 
-		for (i = CustomFields.length - 1; i >= 0; i--) {
-			CustomElement = GetCustomElement(i)
-			if (!CustomElement.length) {
-				continue;
+			for (i = CustomFields.length - 1; i >= 0; i--) {
+				CustomElement = GetCustomElement(i)
+				if (!CustomElement.length) {
+					continue;
+				}
+				CustomElement.attr('tabindex', '3');
+				CustomElement.closest('tr').insertAfter(InsertPointElement);
 			}
-			CustomElement.attr('tabindex', '3');
-			CustomElement.closest('tr').insertAfter(InsertPointElement);
+			InsertPointElement.after('<tr class="spacer"><td colspan="6"></td></tr><tr class="hidden"></tr>');
+			$("tr.hidden").next("tr.spacer").remove();
+			$("tr.hidden").next("tr.hidden").remove();
 		}
-		InsertPointElement.after('<tr class="spacer"><td colspan="6"></td></tr><tr class="hidden"></tr>');
-		$("tr.hidden").next("tr.spacer").remove();
-		$("tr.hidden").next("tr.hidden").remove();
 		if (ShowAfterMove) {
-			$("#update_bug_form").find("table.table").css({"opacity": "1", "pointer-events": "auto"});
+			ShowForm("update_bug_form");
 		}
 	}
 });
