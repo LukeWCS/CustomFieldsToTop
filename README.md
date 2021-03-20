@@ -7,7 +7,6 @@ Moves selected custom fields to the top of the Report Issue form and the Update 
 * The JS / jQuery script is isolated as far as the variables are concerned. No variables / functions are defined in the global namespace.
 
 ### Installation
-
 1. Download the latest release archive.
 2. Copy the folder `CustomFieldsToTop` from the archive into the plugin folder `plugins` of Mantis.
 3. Navigate to the plugin management in Mantis: **Manage** > **Manage Plugins**.

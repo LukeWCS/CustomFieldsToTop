@@ -8,17 +8,18 @@
 * @author LukeWCS
 */
 
-$s_plugin_CustomFieldsToTop_title						= "Benutzerdefinierte Felder Nach Oben";
-$s_plugin_CustomFieldsToTop_description					= "Verschiebt ausgewählte benutzerdefinierte Felder an den Anfang des Eintragserfassung-Formulars und des Eintragsaktualisierung-Formulars.";
+$s_plugin_CustomFieldsToTop_title						= 'Benutzerdefinierte Felder Nach Oben';
+$s_plugin_CustomFieldsToTop_description					= 'Verschiebt ausgewählte benutzerdefinierte Felder an den Anfang des Problem-Melden-Formulars und des Problem-Aktualisieren-Formulars.';
 
-$s_plugin_CustomFieldsToTop_configuration				= "Konfiguration";
+$s_plugin_CustomFieldsToTop_configuration				= 'Konfiguration';
 
-$s_plugin_CustomFieldsToTop_custom_fields_report_title	= "Eintragserfassung-Formular";
-$s_plugin_CustomFieldsToTop_custom_fields_update_title	= "Eintragsaktualisierung-Formular";
+$s_plugin_CustomFieldsToTop_custom_fields_report_title	= 'Problem-Melden-Formular';
+$s_plugin_CustomFieldsToTop_custom_fields_view_title	= 'Problem-Anzeigen-Formular';
+$s_plugin_CustomFieldsToTop_custom_fields_update_title	= 'Problem-Aktualisieren-Formular';
 
-$s_plugin_CustomFieldsToTop_custom_fields_description	= "Hier können die IDs der benutzerdefinierten Felder eingeben werden, die nach oben verschoben werden sollen. Die benutzerdefinierten Felder werden im Formular in der Reihenfolge positioniert, wie sie hier eingegeben werden.";
-$s_plugin_CustomFieldsToTop_custom_fields_input_note1	= "IDs müssen mit Kommas getrennt werden. Beispiel: <code>1,2,3</code>";
-$s_plugin_CustomFieldsToTop_custom_fields_input_note2	= "Nur Ziffern und Kommas sind erlaubt.";
+$s_plugin_CustomFieldsToTop_custom_fields_description	= 'Hier können die IDs der benutzerdefinierten Felder eingeben werden, die nach oben verschoben werden sollen. Die benutzerdefinierten Felder werden im Formular in der Reihenfolge positioniert, wie sie hier eingegeben werden.';
+$s_plugin_CustomFieldsToTop_custom_fields_input_note1	= 'IDs müssen mit Kommas getrennt werden. Beispiel: <code>1,2,3</code>';
+$s_plugin_CustomFieldsToTop_custom_fields_input_note2	= 'Nur Ziffern und Kommas sind erlaubt.';
 
-$s_plugin_CustomFieldsToTop_show_after_move_title		= "Formular erst nach dem Verschieben anzeigen";
-$s_plugin_CustomFieldsToTop_show_after_move_description	= "Das Formular wird erst angezeigt, wenn alle Felder verschoben wurden.";
+$s_plugin_CustomFieldsToTop_show_after_move_title		= 'Formular erst nach dem Verschieben anzeigen';
+$s_plugin_CustomFieldsToTop_show_after_move_description	= 'Das Formular wird erst angezeigt, wenn das Plugin seine Arbeit komplett beendet hat.';

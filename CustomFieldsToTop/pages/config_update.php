@@ -35,6 +35,7 @@ print_successful_redirect(plugin_page('config', true));
 
 function cleanup_custom_fields($fields)
 {
+	$fields = preg_replace('/[^0-9,]/', '', $fields);
 	$fields_array = explode(',', $fields);
 	$fields_array = array_filter($fields_array, function($value) {
 		return (($value == 0) ? false : true);

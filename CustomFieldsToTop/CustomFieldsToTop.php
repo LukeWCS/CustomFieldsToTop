@@ -17,9 +17,9 @@ class CustomFieldsToTopPlugin extends MantisPlugin
 		$this->description = plugin_lang_get('description');
 		$this->page = 'config';
 
-		$this->version = '1.0.1';
+		$this->version = '1.0.2';
 		$this->requires = array(
-			'MantisCore' => "2.25.0",
+			'MantisCore' => '2.25.0',
 		);
 
 		$this->author = 'LukeWCS';
@@ -71,7 +71,7 @@ class CustomFieldsToTopPlugin extends MantisPlugin
 		{
 			return;
 		}
-		$params = $this->build_script_params("CustomFieldsToTop_js", array(
+		$params = $this->build_script_params('CustomFieldsToTop_js', array(
 			'FormName'		=> $this->form_name,
 			'CustomFields'	=> plugin_config_get('custom_fields_' . $this->form_name),
 			'ShowAfterMove'	=> plugin_config_get('show_after_move'),

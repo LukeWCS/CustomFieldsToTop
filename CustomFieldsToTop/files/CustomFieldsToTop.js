@@ -15,15 +15,24 @@ $(document).ready(function() {
 		return $('#custom_field_' + CustomFields[num]);
 	};
 	var ShowForm = function(name) {
-		$("#" + name).find("table.table").css({"opacity": "1", "pointer-events": "auto"});
-	}
+		$('#' + name).find('table').eq(0).css({'opacity': '1', 'pointer-events': 'auto'});
+	};
+	var Reindex = function(name) {
+		var newindex = 0;
+		$('#' + name).find('[tabindex]').each(function(i) {
+			if ($(this).attr('tabindex') > 0) {
+				newindex++;
+				$(this).attr('tabindex', newindex);
+			}
+		});
+	};
 	var FormName = GetScriptParam('FormName');
 	var CustomFields = GetScriptParam('CustomFields').split(',');
 	var ShowAfterMove = (GetScriptParam('ShowAfterMove') == true);
 
-	if (FormName == "report") {
+	if (FormName == 'report') {
 		if (CustomFields[0] !== '' && $('#report_bug_form').length) {
-			var InsertPointElement = $("#category_id").closest('tr');
+			var InsertPointElement = $('#category_id').closest('tr');
 			var CustomElement = null;
 			var CustomElementFirst = null;
 
@@ -32,40 +41,44 @@ $(document).ready(function() {
 				if (!CustomElement.length) {
 					continue;
 				}
-				CustomElement.attr('tabindex', '1');
 				CustomElement.closest('tr').insertBefore(InsertPointElement);
 				if (CustomElementFirst === null) {
 					CustomElementFirst = GetCustomElement(i);
 				}
 			}
 			if (CustomElementFirst !== null) {
-				$("#category_id").removeClass('autofocus');
+				$('#category_id').removeClass('autofocus');
 				CustomElementFirst.addClass('autofocus');
 				CustomElementFirst.focus();
+				Reindex('report_bug_form');
 			}
 		}
 		if (ShowAfterMove) {
-			ShowForm("report_bug_form");
+			ShowForm('report_bug_form');
 		}
-	} else if (FormName == "update") {
+	} else if (FormName == 'update') {
 		if (CustomFields[0] !== '' && $('#update_bug_form').length) {
-			var InsertPointElement = $("#category_id").closest('tr');
+			var InsertPointElement = $('#category_id').closest('tr');
 			var CustomElement = null;
+			var CustomElementMoved = false;
 
 			for (i = CustomFields.length - 1; i >= 0; i--) {
 				CustomElement = GetCustomElement(i)
 				if (!CustomElement.length) {
 					continue;
 				}
-				CustomElement.attr('tabindex', '3');
 				CustomElement.closest('tr').insertAfter(InsertPointElement);
+				CustomElementMoved = true;
 			}
-			InsertPointElement.after('<tr class="spacer"><td colspan="6"></td></tr><tr class="hidden"></tr>');
-			$("tr.hidden").next("tr.spacer").remove();
-			$("tr.hidden").next("tr.hidden").remove();
+			if (CustomElementMoved) {
+				InsertPointElement.after('<tr class="spacer"><td colspan="6"></td></tr><tr class="hidden"></tr>');
+				$('tr.hidden').next('tr.spacer').remove();
+				$('tr.hidden').next('tr.hidden').remove();
+				Reindex('update_bug_form');
+			}
 		}
 		if (ShowAfterMove) {
-			ShowForm("update_bug_form");
+			ShowForm('update_bug_form');
 		}
 	}
 });
